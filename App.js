@@ -16,6 +16,8 @@ import {
   StatusBar,
 } from 'react-native';
 
+import RootNavigator from "./navigation/RootNavigator";
+
 import {
   Header,
   LearnMoreLinks,
@@ -26,24 +28,25 @@ import {
 
 const App: () => React$Node = () => {
   return (
-    <>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          style={styles.scrollView}>
-          <Header />
-          {global.HermesInternal == null ? null : (
-            <View style={styles.engine}>
-              <Text style={styles.footer}>Engine: Hermes</Text>
-            </View>
-          )}
-          <View style={styles.body}>
-            <Text>Ssho Prototype Ver2</Text>
-          </View>
-        </ScrollView>
-      </SafeAreaView>
-    </>
+    // <>
+    //   <StatusBar barStyle="dark-content" />
+    //   <SafeAreaView>
+    //     <ScrollView
+    //       contentInsetAdjustmentBehavior="automatic"
+    //       style={styles.scrollView}>
+    //       {global.HermesInternal == null ? null : (
+    //         <View style={styles.engine}>
+    //           <Text style={styles.footer}>Engine: Hermes</Text>
+    //         </View>
+    //       )}
+    //       <View style={styles.body}>
+    //         <Text>Ssho Prototype Ver2</Text>
+    //       </View>
+    //     </ScrollView>
+    //   </SafeAreaView>
+    // </>
+    <RootNavigator/>
+        
   );
 };
 
