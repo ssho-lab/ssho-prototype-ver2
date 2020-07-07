@@ -6,7 +6,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import BubbleScreen from '../src/screens/BubbleScreen';
-import LogInScreen from '../src/screens/LoginScreen.js';
+import LogInScreen from '../src/screens/LoginScreen';
 import SwipeScreen from '../src/screens/SwipeScreen';
 import CardSettingScreen from '../src/screens/CardSettingScreen';
 import { Switch } from 'react-native-gesture-handler';
