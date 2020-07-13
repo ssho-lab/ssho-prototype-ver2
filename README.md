@@ -18,3 +18,4 @@ ssho 2nd prototype react-native application
 - mobx
 - mobx-react
 - react-native-bubble-select
+- react-native-svg
