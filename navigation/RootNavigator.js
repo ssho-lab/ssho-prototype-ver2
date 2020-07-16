@@ -8,7 +8,7 @@ import {
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {createStackNavigator} from '@react-navigation/stack';
 
-import BubbleScreen from '../src/screens/BubbleScreen';
+import TagSelectScreen from '../src/screens/TagSelectScreen';
 import LogInScreen from '../src/screens/LoginScreen';
 import SwipeScreen from '../src/screens/SwipeScreen';
 import CardSettingScreen from '../src/screens/CardSettingScreen';
@@ -59,7 +59,7 @@ const Tab = createBottomTabNavigator();
 function TabNavigator() {
   return (
     <Tab.Navigator>
-      <Tab.Screen name="Bubble" component={BubbleScreen} />
+      <Tab.Screen name="TagSelect" component={TagSelectScreen} />
       <Tab.Screen name="Swipe" component={SwipeScreen} />
     </Tab.Navigator>
   );
