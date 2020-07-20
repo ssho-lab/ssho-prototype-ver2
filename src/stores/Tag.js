@@ -1,15 +1,15 @@
 import {observable, action} from 'mobx';
 
-class ItemStore {
+class TagStore {
   constructor(root) {
     this.root = root;
   }
 
-  @observable itemList = [1, 2, 3];
+  @observable tagList = [];
 
   @action getItem() {
-    return this.itemList;
+    return this.tagList;
   }
 }
 
-export default ItemStore;
+export default TagStore;

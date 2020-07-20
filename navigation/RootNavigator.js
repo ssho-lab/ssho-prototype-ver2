@@ -8,7 +8,7 @@ import {
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {createStackNavigator} from '@react-navigation/stack';
 
-import TagSelectScreen from '../src/screens/TagSelectScreen';
+import TagSelectScreen from '../src/screens/TagSelect/TagSelectScreen';
 import LogInScreen from '../src/screens/LoginScreen';
 import SwipeScreen from '../src/screens/SwipeScreen';
 import CardSettingScreen from '../src/screens/CardSettingScreen';
