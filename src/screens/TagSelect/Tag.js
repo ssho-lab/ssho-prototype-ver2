@@ -5,10 +5,18 @@ import {useNavigation} from '@react-navigation/native';
 
 const Tag = ({rowIndex, item}) => {
   const navigation = useNavigation();
-
   return (
     <TouchableOpacity onPress={() => navigation.navigate('Swipe')}>
-      <View style={rowIndex === 0 ? styles.firstRow : styles.secondRow}>
+      <View
+        style={
+          item === 0
+            ? styles.firstRow
+            : item === 1
+            ? styles.secondRow
+            : rowIndex === 0
+            ? styles.thirdRow
+            : styles.firstRow
+        }>
         <Image style={styles.img} source={require('../../images/dooboo.jpg')} />
         <Text>{item}</Text>
       </View>
@@ -19,6 +27,7 @@ const Tag = ({rowIndex, item}) => {
 const styles = StyleSheet.create({
   firstRow: {
     marginLeft: 50,
+    zIndex: 0,
   },
   secondRow: {
     marginLeft: 100,
@@ -27,8 +36,8 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   img: {
-    width: 200,
-    height: 200,
+    width: 230,
+    height: 150,
   },
 });
 

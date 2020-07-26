@@ -1,10 +1,19 @@
 import React from 'react';
-import {FlatList, StyleSheet} from 'react-native';
+import {
+  FlatList,
+  StyleSheet,
+  Button,
+  Text,
+  TouchableOpacity,
+  Image,
+  View,
+} from 'react-native';
 import TagColumn from './TagColumn';
+import SearchButton from './SearchButton';
 
 let list = [];
 
-for (let i = 0; i < 100; i++) {
+for (let i = 0; i < 50; i++) {
   list.push(i);
 }
 
@@ -23,20 +32,43 @@ const TagSelectScreen = () => {
   };
 
   return (
-    <FlatList
-      contentContainerStyle={styles.flatListcontainer}
-      horizontal={true}
-      data={tags}
-      keyExtractor={(item, index) => index.toString()}
-      renderItem={renderColumn}
-    />
+    <>
+      <View styles={styles.searchView}>
+        <SearchButton />
+      </View>
+      <FlatList
+        horizontal={true}
+        contentContainerStyle={styles.flatListContainer}
+        data={tags}
+        keyExtractor={(item, index) => index.toString()}
+        renderItem={renderColumn}
+        showsHorizontalScrollIndicator={true}
+        indicatorStyle="white"
+      />
+      <Button title="태그선택완료" styles={styles.button} />
+    </>
   );
 };
 
 const styles = StyleSheet.create({
-  flatListcontainer: {
+  searchView: {
+    flexGrow: 1,
+    height: 100,
+    width: 300,
+    paddingLeft: 50,
+    paddingTop: 100,
+    marginLeft: 50,
+  },
+
+  flatListContainer: {
     flexGrow: 1,
     alignItems: 'center',
+  },
+
+  button: {
+    width: 200,
+    paddingLeft: 50,
+    paddingRight: 50,
   },
 });
 
