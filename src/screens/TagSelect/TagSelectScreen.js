@@ -1,15 +1,8 @@
 import React from 'react';
-import {
-  FlatList,
-  StyleSheet,
-  Button,
-  Text,
-  TouchableOpacity,
-  Image,
-  View,
-} from 'react-native';
+import {FlatList, StyleSheet, Text, View} from 'react-native';
 import TagColumn from './TagColumn';
 import SearchButton from './SearchButton';
+import {TouchableOpacity} from 'react-native-gesture-handler';
 
 let list = [];
 
@@ -33,9 +26,7 @@ const TagSelectScreen = () => {
 
   return (
     <>
-      <View styles={styles.searchView}>
-        <SearchButton />
-      </View>
+      <SearchButton />
       <FlatList
         horizontal={true}
         contentContainerStyle={styles.flatListContainer}
@@ -45,7 +36,11 @@ const TagSelectScreen = () => {
         showsHorizontalScrollIndicator={true}
         indicatorStyle="white"
       />
-      <Button title="태그선택완료" styles={styles.button} />
+      <View style={styles.buttonView}>
+        <TouchableOpacity style={styles.button}>
+          <Text style={styles.buttonText}>태그선택완료</Text>
+        </TouchableOpacity>
+      </View>
     </>
   );
 };
@@ -59,17 +54,24 @@ const styles = StyleSheet.create({
     paddingTop: 100,
     marginLeft: 50,
   },
-
   flatListContainer: {
     flexGrow: 1,
     alignItems: 'center',
   },
-
-  button: {
-    width: 200,
-    paddingLeft: 50,
-    paddingRight: 50,
+  buttonView: {
+    justifyContent: 'center',
+    alignItems: 'center',
   },
+  button: {
+    backgroundColor: 'white',
+    borderColor: 'gray',
+    borderRadius: 20,
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: 200,
+    height: 50,
+  },
+  buttonText: {},
 });
 
 export default TagSelectScreen;

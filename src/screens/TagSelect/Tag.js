@@ -13,9 +13,9 @@ const Tag = ({rowIndex, item}) => {
             ? styles.firstRow
             : item === 1
             ? styles.secondRow
-            : rowIndex === 0
-            ? styles.thirdRow
-            : styles.firstRow
+            : rowIndex === 1
+            ? styles.firstRow
+            : styles.thirdRow
         }>
         <Image style={styles.img} source={require('../../images/dooboo.jpg')} />
         <Text>{item}</Text>
@@ -27,7 +27,6 @@ const Tag = ({rowIndex, item}) => {
 const styles = StyleSheet.create({
   firstRow: {
     marginLeft: 50,
-    zIndex: 0,
   },
   secondRow: {
     marginLeft: 100,

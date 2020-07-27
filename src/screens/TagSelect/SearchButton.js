@@ -19,6 +19,8 @@ const SearchButton = () => {
 
 const styles = StyleSheet.create({
   searchContainer: {
+    marginLeft: 25,
+    marginTop: 25,
     width: 255,
     borderRadius: 22,
     backgroundColor: '#ffffff',
