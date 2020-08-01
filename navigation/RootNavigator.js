@@ -10,7 +10,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 
 import TagSelectScreen from '../src/screens/TagSelect/TagSelectScreen';
 import LogInScreen from '../src/screens/LoginScreen';
-import SwipeScreen from '../src/screens/SwipeScreen';
+import SwipeScreen from '../src/screens/Swipe/SwipeScreen';
 import CardSettingScreen from '../src/screens/CardSettingScreen';
 import {Switch} from 'react-native-gesture-handler';
 
