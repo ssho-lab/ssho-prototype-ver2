@@ -13,6 +13,7 @@ import LogInScreen from '../src/screens/LoginScreen';
 import SwipeScreen from '../src/screens/Swipe/SwipeScreen';
 import CardSettingScreen from '../src/screens/CardSettingScreen';
 import {Switch} from 'react-native-gesture-handler';
+import Carousel from '../src/screens/Carousel/Carousel';
 
 const Home = createStackNavigator();
 
@@ -60,7 +61,7 @@ function TabNavigator() {
   return (
     <Tab.Navigator>
       <Tab.Screen name="TagSelect" component={TagSelectScreen} />
-      <Tab.Screen name="Swipe" component={SwipeScreen} />
+      <Tab.Screen name="Carousel" component={Carousel} />
     </Tab.Navigator>
   );
 }

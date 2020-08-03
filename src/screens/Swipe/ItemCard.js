@@ -1,25 +1,52 @@
 import React from 'react';
-import {View, Text, StyleSheet, Button, Image} from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  Button,
+  Image,
+  ScrollView,
+  Dimensions,
+} from 'react-native';
+import {TouchableOpacity} from 'react-native-gesture-handler';
+
+const {width} = Dimensions.get('window');
+const height = (width * 100) / 60;
+
+const Bullets = () => {
+  let bullets = [];
+  for (let i = 0; i < 5; i++) {
+    bullets.push(<Button title="클릭" style={styles.bullet} />);
+  }
+};
 
 const Card = ({item, index}) => {
+  console.log(item.productExtra.extraImageUrlList);
+  const images = item.productExtra.extraImageUrlList.slice(0, 5);
   return (
     // card 데이터가 없을 땐 빈 카드만 먼저 렌더링 됨
-    <View style={styles.card}>
-      <Image style={styles.image} source={{uri: item.imageUrl}} />
-      <Text style={styles.text}>{item.title}</Text>
-      {/* TouchableOpacity 쓰면 스와이프도 onPress로 인식하는 문제 */}
-      <Button
-        title="링크"
-        onPress={() => {
-          //WebBrowser.openBrowserAsync(item.link); // 앱의 내비게이션은 사라짐
+    <View>
+      <View
+        style={{
+          flexDirection: 'row',
+          position: 'absolute',
+          top: 0,
+          alignSelft: 'center',
         }}
       />
+
+      <ScrollView horizontal={true}>
+        {images.map((item, index) => {
+          <Image key={index} style={styles.image} source={{uri: item}} />;
+        })}
+      </ScrollView>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   card: {
+    width: 2500,
     marginTop: -50,
     height: '80%',
     borderRadius: 4,
@@ -28,9 +55,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: 'white',
   },
+  imageView: {
+    width: '100%',
+    height: '100%',
+  },
   image: {
     marginLeft: '2.5%',
-    width: '95%',
+    width: 500,
     height: '90%',
   },
   text: {
@@ -39,5 +70,14 @@ const styles = StyleSheet.create({
     color: 'coral',
     backgroundColor: 'transparent',
   },
+  bullet: {
+    width: 50,
+    height: 13,
+    backgroundColor: '#ffffff',
+    borderColor: '#707070',
+    borderWidth: 1,
+    borderStyle: 'solid',
+  },
 });
+
 export default Card;
