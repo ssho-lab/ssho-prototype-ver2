@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {View, Text, StyleSheet, Button, Image} from 'react-native';
 import Swiper from 'react-native-deck-swiper';
-import Card from './ItemCard';
+import Carousel from '../Carousel/Carousel';
 import {
   RectButton,
   ScrollView,
@@ -38,7 +38,7 @@ export default class SwipeScreen extends Component {
 
   // swipe 개별 card 생성을 위한 함수 props
   renderCard = (item, index) => {
-    return <Card item={item} index={index} />;
+    return <Carousel item={item} index={index} />;
   };
 
   shopWebView = link => {
@@ -205,7 +205,6 @@ const styles = StyleSheet.create({
   swiper: {
     height: 200,
   },
-
   buttonGroup: {
     flex: 1,
     marginTop: 600,

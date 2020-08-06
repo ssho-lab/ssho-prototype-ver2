@@ -61,7 +61,7 @@ function TabNavigator() {
   return (
     <Tab.Navigator>
       <Tab.Screen name="TagSelect" component={TagSelectScreen} />
-      <Tab.Screen name="Carousel" component={Carousel} />
+      <Tab.Screen name="Swipe" component={SwipeScreen} />
     </Tab.Navigator>
   );
 }
