@@ -19,3 +19,8 @@ ssho 2nd prototype react-native application
 - mobx-react
 - react-native-bubble-select
 - react-native-svg
+
+# Install
+
+- npm install (yarn add)
+- npx react-native run-android (npx react-native run-ios)
