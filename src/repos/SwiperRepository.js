@@ -15,6 +15,7 @@ class SwiperRepository {
     axios
       .post(this.URL + ':8082/log/swipe', SwipeLogs)
       .then(response => {
+        console.log('saveSwipeLogs');
         console.log(response);
       })
       .catch(error => console.log(error));

@@ -13,7 +13,6 @@ import LogInScreen from '../src/screens/LoginScreen';
 import SwipeScreen from '../src/screens/Swipe/SwipeScreen';
 import CardSettingScreen from '../src/screens/CardSettingScreen';
 import {Switch} from 'react-native-gesture-handler';
-import Carousel from '../src/screens/Carousel/Carousel';
 
 const Home = createStackNavigator();
 

@@ -1,5 +1,5 @@
 import {React, Component} from 'react';
-import {decorate, observable, action, Autobind, toJS, asyncAction} from 'mobx';
+import {observable, action} from 'mobx';
 import moment from 'moment';
 import SwiperRepository from '../repos/SwiperRepository';
 import itemModel from '../models/ItemModel';
@@ -22,8 +22,13 @@ class itemStore {
   };
 
   @action // api를 통해 itemList 가져오기
-  async getCardList(params) {
-    const response = await swiperRepository.getItemList();
+  async getCardList() {
+    let response;
+    try {
+      response = await swiperRepository.getItemList();
+    } catch (error) {
+      console.log(error);
+    }
     const data = response.data.slice(0, 10);
     this.cards = data.map(item => new itemModel(item));
   }
@@ -41,15 +46,15 @@ class itemStore {
     const itemId = this.cards[cardIndex].id;
     const swipeTime = moment(new Date()).format('YYYY-MM-DD hh:mm:ss');
     const swipe = {
-      userId: 1,
+      userId: 1, // 임시
       itemId: itemId,
       score: score,
       swipeTime: swipeTime,
     };
-    //console.log(swipe);
-    //this.swipeList.push(swipe);
+
+    console.log('add Swipe Log');
+    console.log(swipe);
     this.swipeLogs.swipeList.push(swipe);
-    console.log(this.swipeLogs);
   };
 
   @action // save likeList
