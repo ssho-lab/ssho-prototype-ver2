@@ -18,7 +18,7 @@ const Tag = ({rowIndex, item}) => {
             : styles.thirdRow
         }>
         <Image style={styles.img} source={require('../../images/dooboo.jpg')} />
-        <Text>{item}</Text>
+        <Text>{item.name}</Text>
       </View>
     </TouchableOpacity>
   );
@@ -35,8 +35,11 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   img: {
-    width: 230,
+    width: 200,
     height: 150,
+    borderRadius: 100,
+    borderColor: "black",
+    borderWidth: 1,
   },
 });
 
