@@ -1,4 +1,4 @@
-import {extendObservable, Autobind} from 'mobx';
+import {extendObservable} from 'mobx';
 
 class itemModel {
   constructor(data) {

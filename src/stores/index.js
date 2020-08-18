@@ -1,4 +1,4 @@
-import ItemStore from "./Item";
+import ItemStore from './Item';
 
 class RootStore {
   constructor() {

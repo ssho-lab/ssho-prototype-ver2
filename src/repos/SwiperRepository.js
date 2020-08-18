@@ -1,14 +1,14 @@
 import axios from 'axios';
 
 class SwiperRepository {
-  URL = 'http://13.124.59.2';
+  URL = 'http://101.101.217.66';
 
   constructor(url) {
     this.URL = url || this.URL;
   }
 
   getItemList() {
-    return axios.get(this.URL + ':8081/item', {});
+    return axios.get(this.URL + ':8080/cache/user-item?userId=', 14);
   }
 
   saveSwipeLogs(SwipeLogs) {

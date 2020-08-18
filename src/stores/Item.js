@@ -3,7 +3,6 @@ import {observable, action} from 'mobx';
 import moment from 'moment';
 import SwiperRepository from '../repos/SwiperRepository';
 import itemModel from '../models/ItemModel';
-import {Card} from 'react-native-elements';
 
 const swiperRepository = new SwiperRepository();
 
@@ -30,7 +29,7 @@ class itemStore {
     } catch (error) {
       console.log(error);
     }
-    const data = response.data.slice(0, 10);
+    const data = response.data.itemList;
     this.cards = data.map(item => new itemModel(item));
   }
 
