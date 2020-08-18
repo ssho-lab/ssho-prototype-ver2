@@ -29,7 +29,7 @@ class itemStore {
     } catch (error) {
       console.log(error);
     }
-    const data = response.data.slice(0, 10);
+    const data = response.data.itemList;
     this.cards = data.map(item => new itemModel(item));
   }
 
