@@ -3,6 +3,7 @@ import {observable, action} from 'mobx';
 import moment from 'moment';
 import SwiperRepository from '../repos/SwiperRepository';
 import itemModel from '../models/ItemModel';
+import {Card} from 'react-native-elements';
 
 const swiperRepository = new SwiperRepository();
 

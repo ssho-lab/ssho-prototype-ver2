@@ -13,7 +13,8 @@ import LogInScreen from '../src/screens/LoginScreen';
 import SwipeScreen from '../src/screens/Swipe/SwipeScreen';
 import CardSettingScreen from '../src/screens/CardSettingScreen';
 import {Switch} from 'react-native-gesture-handler';
-
+import Carousel from '../src/screens/Swipe/Carousel';
+import ImageModal from '../src/screens/Swipe/ImageModal';
 const Home = createStackNavigator();
 
 const state = {
@@ -61,6 +62,7 @@ function TabNavigator() {
     <Tab.Navigator>
       <Tab.Screen name="TagSelect" component={TagSelectScreen} />
       <Tab.Screen name="Swipe" component={SwipeScreen} />
+      <Tab.Screen name="ImageModal" component={ImageModal} />
     </Tab.Navigator>
   );
 }

@@ -5,6 +5,9 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#F5FCFF',
   },
+  bulletView: {
+    flex: 1,
+  },
   swiper: {
     backgroundColor: '#E57373',
   },

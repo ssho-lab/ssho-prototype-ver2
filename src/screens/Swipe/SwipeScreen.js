@@ -1,10 +1,17 @@
 import React, {Component} from 'react';
-import {View, Text, Platform} from 'react-native';
+import {View, Text, Platform, TouchableOpacity} from 'react-native';
 import Swiper from 'react-native-deck-swiper';
-import Carousel from './Carousel';
 import styles from './SwipeScreenCss';
 import {inject, observer} from 'mobx-react';
+import ImageCarousel from './ImageCarousel';
 
+// const images = [
+//   'http://vivastudio.co.kr/web/product/extra/small/20200428/0755da07ddd4865b043c4172451620b8.jpg',
+//   'http://vivastudio.co.kr/web/product/extra/small/20200428/5c74ce8b7f0dbad26d5e1410bcd00fb1.jpg',
+//   'http://vivastudio.co.kr/web/product/extra/small/20200428/fed867987702f8a066a70bcdb562eaa2.jpg',
+//   'http://vivastudio.co.kr/web/product/extra/small/20200428/f88a54affbac95b75ecdeb15f98ffb1d.jpg',
+//   'http://vivastudio.co.kr/web/product/extra/small/20200428/a3ee6aae1320b633d17f12165bcbc3f3.jpg',
+// ];
 // Todo - 코드 정리, 스타일링, 로직 확인, 태그 스크린과 연동
 @inject('itemStore')
 @observer
@@ -21,8 +28,8 @@ class SwipeScreen extends Component {
   };
 
   // swipe 개별 card 생성을 위한 함수 props
-  renderCard = (item, index) => {
-    return <Carousel item={item} index={index} />;
+  renderCard = item => {
+    return <ImageCarousel item={item} />;
   };
 
   onSwiped = (type, cardIndex) => {
@@ -45,6 +52,8 @@ class SwipeScreen extends Component {
     saveSwipeLogs();
   };
 
+  tapToCarousel = () => {};
+
   render() {
     const itemStore = this.props.itemStore;
     const {cards, cardIndex} = itemStore;
@@ -52,7 +61,9 @@ class SwipeScreen extends Component {
 
     return (
       <View style={styles.container}>
-        {!isLoading ? (
+        {isLoading ? (
+          <Text>Loading...</Text>
+        ) : (
           <Swiper
             containerStyle={styles.swiper}
             ref={swiper => {
@@ -87,12 +98,9 @@ class SwipeScreen extends Component {
             animateOverlayLabelsOpacity
             animateCardOpacity
             swipeBackCard
-            onTapCard={() => console.log('Tap Card')}
             outputRotationRange={['-20deg', '0deg', '20deg']}
             useViewOverflow={Platform.OS === 'ios'}
           />
-        ) : (
-          <Text style={styles.text}>Loading....</Text>
         )}
       </View>
     );
