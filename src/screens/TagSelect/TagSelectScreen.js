@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, {useEffect} from 'react';
 import {FlatList, StyleSheet, Text, View} from 'react-native';
 import TagColumn from './TagColumn';
 import SearchButton from './SearchButton';
@@ -11,11 +11,9 @@ import {inject, observer} from 'mobx-react';
   list.push({'idx': i, 'tag' : "태그"});
 }*/
 
-
-
-const TagSelectScreen = ({tagStore}) => {
+const TagSelectScreen = ({tagStore, userStore}) => {
+  const user = userStore.userName;
   const tags = [];
-
   useEffect(() => {
     tagStore.getItem();
   }, []);
@@ -24,7 +22,7 @@ const TagSelectScreen = ({tagStore}) => {
 
   const list1 = list.filter((el, idx) => idx % 2 === 0);
   const list2 = list.filter((el, idx) => idx % 2 !== 0);
-  
+
   list1.forEach((el, idx) => {
     let arr = list2[idx] ? [el, list2[idx]] : [el];
     tags.push(arr);
@@ -33,6 +31,15 @@ const TagSelectScreen = ({tagStore}) => {
   const renderColumn = ({item}) => {
     return <TagColumn item={item} />;
   };
+
+  // user 체크
+  if (!user) {
+    return (
+      <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+        <Text>로그인해주세요</Text>
+      </View>
+    );
+  }
 
   return (
     <>
@@ -87,4 +94,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default inject("tagStore") (observer (TagSelectScreen));
+export default inject('tagStore', 'userStore')(observer(TagSelectScreen));

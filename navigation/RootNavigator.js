@@ -12,9 +12,8 @@ import TagSelectScreen from '../src/screens/TagSelect/TagSelectScreen';
 import LogInScreen from '../src/screens/LoginScreen';
 import SwipeScreen from '../src/screens/Swipe/SwipeScreen';
 import CardSettingScreen from '../src/screens/CardSettingScreen';
-import {Switch} from 'react-native-gesture-handler';
-import Carousel from '../src/screens/Swipe/Carousel';
-import ImageModal from '../src/screens/Swipe/ImageModal';
+import HomeScreen from '../src/screens/Home/HomeScreen';
+
 const Home = createStackNavigator();
 
 const state = {
@@ -25,7 +24,7 @@ function HomeNavigator() {
   return (
     <Home.Navigator>
       {state.isLoggedIn ? ( // 로그인을 한 상태
-        <Home.Screen name="Home" component={MainStackNavigator} />
+        <Home.Screen name="S-Sho" component={MainStackNavigator} />
       ) : (
         // 로그인을 하지 않은 상태
         <Home.Screen name="Auth" component={AuthNavigator} />
@@ -60,9 +59,9 @@ const Tab = createBottomTabNavigator();
 function TabNavigator() {
   return (
     <Tab.Navigator>
+      <Tab.Screen name="Home" component={HomeScreen} />
       <Tab.Screen name="TagSelect" component={TagSelectScreen} />
       <Tab.Screen name="Swipe" component={SwipeScreen} />
-      <Tab.Screen name="ImageModal" component={ImageModal} />
     </Tab.Navigator>
   );
 }

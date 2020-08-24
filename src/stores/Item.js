@@ -3,6 +3,7 @@ import {observable, action} from 'mobx';
 import moment from 'moment';
 import SwiperRepository from '../repos/SwiperRepository';
 import itemModel from '../models/ItemModel';
+import temp from '../temp';
 
 const swiperRepository = new SwiperRepository();
 
@@ -28,8 +29,11 @@ class itemStore {
       response = await swiperRepository.getItemList();
     } catch (error) {
       console.log(error);
+      // error일 경우 temp data를 가져온다.
+      response = temp;
     }
     const data = response.data.itemList;
+    console.log(data);
     this.cards = data.map(item => new itemModel(item));
   }
 

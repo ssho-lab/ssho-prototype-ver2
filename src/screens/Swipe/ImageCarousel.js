@@ -1,19 +1,11 @@
 import React, {useState} from 'react';
 import {View, Image, StyleSheet, Text, TouchableOpacity} from 'react-native';
 
-// const images = [
-//   'http://vivastudio.co.kr/web/product/extra/small/20200428/0755da07ddd4865b043c4172451620b8.jpg',
-//   'http://vivastudio.co.kr/web/product/extra/small/20200428/5c74ce8b7f0dbad26d5e1410bcd00fb1.jpg',
-//   'http://vivastudio.co.kr/web/product/extra/small/20200428/fed867987702f8a066a70bcdb562eaa2.jpg',
-//   'http://vivastudio.co.kr/web/product/extra/small/20200428/f88a54affbac95b75ecdeb15f98ffb1d.jpg',
-//   'http://vivastudio.co.kr/web/product/extra/small/20200428/a3ee6aae1320b633d17f12165bcbc3f3.jpg',
-// ];
-
 const imageCarousel = item => {
   const productExtra = item.item.productExtra;
   let images = productExtra.extraImageUrlList.slice(0, 4);
   images.unshift(item.item.imageUrl);
-  console.log(images);
+
   const length = images.length;
 
   const [zIndexArr, setZIndexArr] = useState(
@@ -23,6 +15,7 @@ const imageCarousel = item => {
   );
 
   const handlePress = index => {
+    console.log(zIndexArr);
     setZIndexArr(
       zIndexArr.map((el, idx) => (idx === (index + 1) % length ? 1 : 0)),
     );

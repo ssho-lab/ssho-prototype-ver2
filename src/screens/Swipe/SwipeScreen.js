@@ -13,7 +13,7 @@ import ImageCarousel from './ImageCarousel';
 //   'http://vivastudio.co.kr/web/product/extra/small/20200428/a3ee6aae1320b633d17f12165bcbc3f3.jpg',
 // ];
 // Todo - 코드 정리, 스타일링, 로직 확인, 태그 스크린과 연동
-@inject('itemStore')
+@inject('itemStore', 'userStore')
 @observer
 class SwipeScreen extends Component {
   constructor(props) {
@@ -55,6 +55,14 @@ class SwipeScreen extends Component {
   tapToCarousel = () => {};
 
   render() {
+    const user = this.props.userStore.userName;
+    if (!user) {
+      return (
+        <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+          <Text>로그인해주세요</Text>
+        </View>
+      );
+    }
     const itemStore = this.props.itemStore;
     const {cards, cardIndex} = itemStore;
     const isLoading = cards.length === 0 ? true : false;
