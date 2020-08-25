@@ -1,6 +1,6 @@
 import * as React from 'react';
 import 'react-native-gesture-handler';
-
+import {Text} from 'react-native';
 import {
   NavigationContainer,
   createSwitchNavigator,
@@ -59,9 +59,21 @@ const Tab = createBottomTabNavigator();
 function TabNavigator() {
   return (
     <Tab.Navigator>
-      <Tab.Screen name="Home" component={HomeScreen} />
-      <Tab.Screen name="TagSelect" component={TagSelectScreen} />
-      <Tab.Screen name="Swipe" component={SwipeScreen} />
+      <Tab.Screen
+        name="Home"
+        component={HomeScreen}
+        options={{tabBarLabel: 'Home', tabBarIcon: () => <Text>🏠</Text>}}
+      />
+      <Tab.Screen
+        name="TagSelect"
+        component={TagSelectScreen}
+        options={{tabBarLabel: 'Tag', tabBarIcon: () => <Text>🏷️</Text>}}
+      />
+      <Tab.Screen
+        name="Swipe"
+        component={SwipeScreen}
+        options={{tabBarLabel: 'Swipe', tabBarIcon: () => <Text>🛍️</Text>}}
+      />
     </Tab.Navigator>
   );
 }

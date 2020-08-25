@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, Text, Platform, TouchableOpacity} from 'react-native';
+import {View, Text, Platform, TouchableOpacity, Button} from 'react-native';
 import Swiper from 'react-native-deck-swiper';
 import styles from './SwipeScreenCss';
 import {inject, observer} from 'mobx-react';
@@ -18,6 +18,7 @@ import ImageCarousel from './ImageCarousel';
 class SwipeScreen extends Component {
   constructor(props) {
     super(props);
+    this.state = {isFinished: false};
   }
 
   componentDidMount = () => {
@@ -50,6 +51,9 @@ class SwipeScreen extends Component {
   onSwipedAllCards = () => {
     const {saveSwipeLogs} = this.props.itemStore;
     saveSwipeLogs();
+    this.setState({
+      isFinished: true,
+    });
   };
 
   tapToCarousel = () => {};
@@ -60,6 +64,22 @@ class SwipeScreen extends Component {
       return (
         <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
           <Text>로그인해주세요</Text>
+        </View>
+      );
+    }
+
+    const isFinished = this.state.isFinished;
+
+    if (isFinished) {
+      return (
+        <View
+          style={{
+            flex: 1,
+            justifyContent: 'center',
+            alignItems: 'center',
+            backgroundColor: '#F5FCFF',
+          }}>
+          <Text>스와이프가 끝났습니다</Text>
         </View>
       );
     }
