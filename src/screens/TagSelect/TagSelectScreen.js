@@ -1,23 +1,16 @@
-import React, { useEffect } from 'react';
-import {FlatList, StyleSheet, Text, View} from 'react-native';
+import React, { useState, useEffect } from 'react';
+import {FlatList, StyleSheet, Text, View, Button} from 'react-native';
 import TagColumn from './TagColumn';
 import SearchButton from './SearchButton';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {inject, observer} from 'mobx-react';
 
-//let list = [];
-
-/*for (let i = 0; i < 50; i++) {
-  list.push({'idx': i, 'tag' : "태그"});
-}*/
-
-
-
 const TagSelectScreen = ({tagStore}) => {
   const tags = [];
+  const [searchWord, setSearchWord] = useState('');
 
   useEffect(() => {
-    tagStore.getItem();
+    tagStore.getTags();
   }, []);
 
   let list = tagStore.tagList;
@@ -34,10 +27,21 @@ const TagSelectScreen = ({tagStore}) => {
     return <TagColumn item={item} />;
   };
 
+  const onSubmitSearchWord = () => {
+    console.log("tagSelectScreen", searchWord);
+    tagStore.searchTag(searchWord);
+  }
+
   return (
     <>
-      <SearchButton />
-      <FlatList
+      <SearchButton 
+        searchWord={searchWord} 
+        setSearchWord={setSearchWord}
+        onSubmit={onSubmitSearchWord}
+        onClear={() => tagStore.getTags()}/>
+      {list.length === 0
+      ? <View style={styles.textContainer}><Text>검색어와 일치하는 태그가 없습니다.</Text></View>
+      : <FlatList
         horizontal={true}
         contentContainerStyle={styles.flatListContainer}
         data={tags}
@@ -45,7 +49,7 @@ const TagSelectScreen = ({tagStore}) => {
         renderItem={renderColumn}
         showsHorizontalScrollIndicator={true}
         indicatorStyle="white"
-      />
+      />}
       <View style={styles.buttonView}>
         <TouchableOpacity style={styles.button}>
           <Text style={styles.buttonText}>태그선택완료</Text>
@@ -77,14 +81,22 @@ const styles = StyleSheet.create({
     borderColor: 'gray',
     borderRadius: 50,
     borderWidth: 1,
+
     justifyContent: 'center',
     alignItems: 'center',
     width: 200,
     height: 50,
+
+    marginBottom: 25,
   },
   buttonText: {
     color: 'black',
   },
+  textContainer:{
+    flexGrow: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  }
 });
 
 export default inject("tagStore") (observer (TagSelectScreen));

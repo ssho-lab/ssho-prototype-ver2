@@ -6,7 +6,7 @@ const TagColumn = ({item, idx}) => {
   return (
     <View styles={styles.rows}>
       <Tag rowIndex={0} item={item[0]} />
-      <Tag rowIndex={1} item={item[1]} />
+      {item[1] && <Tag rowIndex={1} item={item[1]} />}
     </View>
   );
 };
