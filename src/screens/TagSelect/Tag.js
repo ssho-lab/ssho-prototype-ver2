@@ -8,15 +8,7 @@ const Tag = ({rowIndex, item}) => {
   return (
     <TouchableOpacity onPress={() => navigation.navigate('Swipe')}>
       <View
-        style={
-          item === 0
-            ? styles.firstRow
-            : item === 1
-            ? styles.secondRow
-            : rowIndex === 1
-            ? styles.firstRow
-            : styles.thirdRow
-        }>
+        style={rowIndex ? styles.secondRow : styles.firstRow}>
         <Image style={styles.img} source={require('../../images/dooboo.jpg')} />
         <Text>{item.name}</Text>
       </View>
@@ -26,10 +18,12 @@ const Tag = ({rowIndex, item}) => {
 
 const styles = StyleSheet.create({
   firstRow: {
-    marginLeft: 50,
+    marginLeft: 30,
+    alignItems: "center",
   },
   secondRow: {
     marginLeft: 100,
+    alignItems: "center"
   },
   secondColumnText: {
     fontSize: 20,

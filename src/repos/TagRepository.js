@@ -7,8 +7,12 @@ class TagRepository {
     this.URL = url || this.URL;
   }
   // Todo - userId 값 식별해서 요청 보내기 
-  getTagList() {
+  getTags() {
     return axios.get(this.URL + ':8083/tag/reco?userId=14', {});
+  }
+
+  searchTag(keyword) {
+    return axios.get(this.URL + ":8083/tag/search?keyword=" + keyword + "&userId=14");
   }
 }
 
