@@ -5,7 +5,14 @@ import SearchButton from './SearchButton';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {inject, observer} from 'mobx-react';
 
-const TagSelectScreen = ({tagStore}) => {
+//let list = [];
+
+/*for (let i = 0; i < 50; i++) {
+  list.push({'idx': i, 'tag' : "태그"});
+}*/
+
+const TagSelectScreen = ({tagStore, userStore}) => {
+  const user = userStore.userName;
   const tags = [];
   const [searchWord, setSearchWord] = useState('');
 
@@ -17,7 +24,7 @@ const TagSelectScreen = ({tagStore}) => {
 
   const list1 = list.filter((el, idx) => idx % 2 === 0);
   const list2 = list.filter((el, idx) => idx % 2 !== 0);
-  
+
   list1.forEach((el, idx) => {
     let arr = list2[idx] ? [el, list2[idx]] : [el];
     tags.push(arr);
@@ -27,6 +34,14 @@ const TagSelectScreen = ({tagStore}) => {
     return <TagColumn item={item} />;
   };
 
+  // user 체크
+  if (!user) {
+    return (
+      <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+        <Text>로그인해주세요</Text>
+      </View>
+    );
+    
   const onSubmitSearchWord = () => {
     console.log("tagSelectScreen", searchWord);
     tagStore.searchTag(searchWord);
@@ -99,4 +114,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default inject("tagStore") (observer (TagSelectScreen));
+export default inject('tagStore', 'userStore')(observer(TagSelectScreen));

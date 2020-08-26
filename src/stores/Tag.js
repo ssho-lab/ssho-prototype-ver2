@@ -13,6 +13,7 @@ class tagStore {
   @observable tagList = [];
 
   // Todo 2. API 연결해서 Tag List 받아오기
+
   @action 
   async getTags() {
     let response;
