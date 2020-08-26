@@ -3,6 +3,7 @@ import {View, Image, StyleSheet, Text, TouchableOpacity} from 'react-native';
 
 const imageCarousel = item => {
   const productExtra = item.item.productExtra;
+  // To do. 예외처리
   let images = productExtra.extraImageUrlList.slice(0, 4);
   images.unshift(item.item.imageUrl);
 

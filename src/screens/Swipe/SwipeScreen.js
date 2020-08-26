@@ -43,6 +43,9 @@ class SwipeScreen extends Component {
       case 'right':
         addSwipeLog(cardIndex, 1); // like 1이면 좋아요
         break;
+      case 'top':
+        addSwipeLog(cardIndex, 2); // like 2이면 superLike
+        break;
       default:
         break;
     }
@@ -70,19 +73,19 @@ class SwipeScreen extends Component {
 
     const isFinished = this.state.isFinished;
 
-    if (isFinished) {
-      return (
-        <View
-          style={{
-            flex: 1,
-            justifyContent: 'center',
-            alignItems: 'center',
-            backgroundColor: '#F5FCFF',
-          }}>
-          <Text>스와이프가 끝났습니다</Text>
-        </View>
-      );
-    }
+    // if (isFinished) {
+    //   return (
+    //     <View
+    //       style={{
+    //         flex: 1,
+    //         justifyContent: 'center',
+    //         alignItems: 'center',
+    //         backgroundColor: '#F5FCFF',
+    //       }}>
+    //       <Text>스와이프가 끝났습니다</Text>
+    //     </View>
+    //   );
+    // }
     const itemStore = this.props.itemStore;
     const {cards, cardIndex} = itemStore;
     const isLoading = cards.length === 0 ? true : false;
@@ -100,13 +103,14 @@ class SwipeScreen extends Component {
             allSwipedCheck
             onSwipedLeft={index => this.onSwiped('left', index)}
             onSwipedRight={index => this.onSwiped('right', index)}
+            onSwipedTop={index => this.onSwiped('top', index)}
             cards={cards.slice()}
             cardStyle={styles.card}
             cardIndex={cardIndex}
             cardVerticalMargin={80}
             verticalSwipe={true}
             renderCard={this.renderCard}
-            onSwipedAll={() => this.onSwipedAllCards()}
+            onSwipedAll={this.onSwipedAllCards}
             stackSize={2}
             stackSeparation={10}
             overlayLabels={{

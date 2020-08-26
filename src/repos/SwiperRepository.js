@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 class SwiperRepository {
-  URL = 'http://54.180.89.39';
+  URL = 'http://13.125.225.61';
 
   constructor(url) {
     this.URL = url || this.URL;
@@ -17,10 +17,9 @@ class SwiperRepository {
 
   saveSwipeLogs(SwipeLogs) {
     axios
-      .post(this.URL + ':8082/log/swipe', SwipeLogs)
+      .post('http://13.124.59.2' + ':8082/log/swipe', SwipeLogs)
       .then(response => {
-        console.log('saveSwipeLogs');
-        console.log(response);
+        console.log('saveSwipeLogs success');
       })
       .catch(error => console.log(error));
   }

@@ -13,6 +13,7 @@ const HomeScreen = ({userStore}) => {
 
   const handleClick = () => {
     userStore.setUserName(userName);
+    // Todo. 튜토리얼 여부 판단
     navigation.navigate('TagSelect');
   };
 
