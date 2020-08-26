@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect} from 'react';
 import {FlatList, StyleSheet, Text, View, Button} from 'react-native';
 import TagColumn from './TagColumn';
 import SearchButton from './SearchButton';
@@ -41,30 +41,36 @@ const TagSelectScreen = ({tagStore, userStore}) => {
         <Text>로그인해주세요</Text>
       </View>
     );
-    
-  const onSubmitSearchWord = () => {
-    console.log("tagSelectScreen", searchWord);
-    tagStore.searchTag(searchWord);
   }
+
+  const onSubmitSearchWord = () => {
+    console.log('tagSelectScreen', searchWord);
+    tagStore.searchTag(searchWord);
+  };
 
   return (
     <>
-      <SearchButton 
-        searchWord={searchWord} 
+      <SearchButton
+        searchWord={searchWord}
         setSearchWord={setSearchWord}
         onSubmit={onSubmitSearchWord}
-        onClear={() => tagStore.getTags()}/>
-      {list.length === 0
-      ? <View style={styles.textContainer}><Text>검색어와 일치하는 태그가 없습니다.</Text></View>
-      : <FlatList
-        horizontal={true}
-        contentContainerStyle={styles.flatListContainer}
-        data={tags}
-        keyExtractor={(item, index) => index.toString()}
-        renderItem={renderColumn}
-        showsHorizontalScrollIndicator={true}
-        indicatorStyle="white"
-      />}
+        onClear={() => tagStore.getTags()}
+      />
+      {list.length === 0 ? (
+        <View style={styles.textContainer}>
+          <Text>검색어와 일치하는 태그가 없습니다.</Text>
+        </View>
+      ) : (
+        <FlatList
+          horizontal={true}
+          contentContainerStyle={styles.flatListContainer}
+          data={tags}
+          keyExtractor={(item, index) => index.toString()}
+          renderItem={renderColumn}
+          showsHorizontalScrollIndicator={true}
+          indicatorStyle="white"
+        />
+      )}
       <View style={styles.buttonView}>
         <TouchableOpacity style={styles.button}>
           <Text style={styles.buttonText}>태그선택완료</Text>
@@ -107,11 +113,11 @@ const styles = StyleSheet.create({
   buttonText: {
     color: 'black',
   },
-  textContainer:{
+  textContainer: {
     flexGrow: 1,
     justifyContent: 'center',
     alignItems: 'center',
-  }
+  },
 });
 
 export default inject('tagStore', 'userStore')(observer(TagSelectScreen));
