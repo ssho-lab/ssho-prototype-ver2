@@ -62,7 +62,7 @@ class SwipeScreen extends Component {
   tapToCarousel = () => {};
 
   render() {
-    const user = this.props.userStore.userName;
+    const user = this.props.userStore.user.name;
     if (!user) {
       return (
         <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>

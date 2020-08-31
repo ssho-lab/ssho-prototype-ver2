@@ -8,13 +8,19 @@ const HomeScreen = ({userStore}) => {
   const [userName, setUserName] = useState('');
 
   const handleInput = e => {
-    setUserName(e.nativeEvent.text);
+    userStore.setUserName(e.nativeEvent.text);
   };
 
   const handleClick = () => {
-    userStore.setUserName(userName);
+    //userStore.setUserName(userName);
     // Todo. 튜토리얼 여부 판단
-    navigation.navigate('TagSelect');
+    userStore.signIn();
+    console.log(userStore.user);
+    if (userStore.user.status === 'initial') {
+      navigation.navigate('Swipe');
+    } else {
+      navigation.navigate('TagSelect');
+    }
   };
 
   return (
