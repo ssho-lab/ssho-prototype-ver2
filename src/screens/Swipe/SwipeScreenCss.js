@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import {StyleSheet, Dimensions} from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   swiper: {
-    backgroundColor: '#E57373',
+    backgroundColor: '#dfe6e9',
   },
   card: {},
   buttonGroup: {
@@ -60,6 +60,13 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  tutorialText: {
+    position: 'absolute',
+    top: 20,
+    left: Dimensions.get('window').width / 2 - 35,
+    color: '#c0392b',
+    fontSize: 20,
   },
 });
 

@@ -12,7 +12,7 @@ import {inject, observer} from 'mobx-react';
 }*/
 
 const TagSelectScreen = ({tagStore, userStore}) => {
-  const user = userStore.userName;
+  const user = userStore.user.name;
   const tags = [];
   const [searchWord, setSearchWord] = useState('');
 

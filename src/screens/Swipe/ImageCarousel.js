@@ -2,10 +2,13 @@ import React, {useState} from 'react';
 import {View, Image, StyleSheet, Text, TouchableOpacity} from 'react-native';
 
 const imageCarousel = item => {
-  const productExtra = item.item.productExtra;
+  const productExtra = item && item.item && item.item.productExtra;
   // To do. 예외처리
-  let images = productExtra.extraImageUrlList.slice(0, 4);
-  images.unshift(item.item.imageUrl);
+  let images = productExtra && productExtra.extraImageUrlList.slice(0, 4);
+
+  if (item && item.item.imageUrl) {
+    images.unshift(item.item.imageUrl);
+  }
 
   const length = images.length;
 
@@ -23,6 +26,10 @@ const imageCarousel = item => {
   };
 
   const itemInfo = (index, item) => {
+    // tutorial일 경우
+    if (!item) {
+      return;
+    }
     return (
       <View style={{...styles.itemInfo, zIndex: 3}}>
         {item.realTagList.map((tag, idx) => (

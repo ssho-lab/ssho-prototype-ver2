@@ -33,7 +33,6 @@ class itemStore {
       response = temp;
     }
     const data = response.data.itemList;
-    console.log(data);
     this.cards = data.map(item => new itemModel(item));
   }
 
