@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, Text, Platform, TouchableOpacity, Button} from 'react-native';
+import {View, Text, Platform, Dimensions} from 'react-native';
 import Swiper from 'react-native-deck-swiper';
 import styles from './SwipeScreenCss';
 import {inject, observer} from 'mobx-react';
@@ -57,6 +57,7 @@ class SwipeScreen extends Component {
     this.setState({
       isFinished: true,
     });
+    this.props.navigation.navigate('TagSelect');
   };
 
   tapToCarousel = () => {};
@@ -73,19 +74,20 @@ class SwipeScreen extends Component {
 
     const isFinished = this.state.isFinished;
 
-    // if (isFinished) {
-    //   return (
-    //     <View
-    //       style={{
-    //         flex: 1,
-    //         justifyContent: 'center',
-    //         alignItems: 'center',
-    //         backgroundColor: '#F5FCFF',
-    //       }}>
-    //       <Text>스와이프가 끝났습니다</Text>
-    //     </View>
-    //   );
-    // }
+    if (isFinished) {
+      return (
+        <View
+          style={{
+            flex: 1,
+            justifyContent: 'center',
+            alignItems: 'center',
+            backgroundColor: '#F5FCFF',
+          }}>
+          <Text>스와이프가 끝났습니다</Text>
+        </View>
+      );
+    }
+
     const itemStore = this.props.itemStore;
     const {cards, cardIndex} = itemStore;
     const isLoading = cards.length === 0 ? true : false;
@@ -131,8 +133,13 @@ class SwipeScreen extends Component {
             animateCardOpacity
             swipeBackCard
             outputRotationRange={['-20deg', '0deg', '20deg']}
-            useViewOverflow={Platform.OS === 'ios'}
-          />
+            useViewOverflow={Platform.OS === 'ios'}>
+            {this.props.userStore.user.status === 'initial' ? (
+              <Text style={styles.tutorialText}>튜토리얼</Text>
+            ) : (
+              <></>
+            )}
+          </Swiper>
         )}
       </View>
     );
