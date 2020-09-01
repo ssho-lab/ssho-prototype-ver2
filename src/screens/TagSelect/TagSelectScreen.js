@@ -17,7 +17,7 @@ const TagSelectScreen = ({tagStore, userStore}) => {
   const [searchWord, setSearchWord] = useState('');
 
   useEffect(() => {
-    tagStore.getTags();
+    tagStore.getTags(userStore.userId);
   }, []);
 
   let list = tagStore.tagList;
@@ -44,8 +44,7 @@ const TagSelectScreen = ({tagStore, userStore}) => {
   }
 
   const onSubmitSearchWord = () => {
-    console.log('tagSelectScreen', searchWord);
-    tagStore.searchTag(searchWord);
+    tagStore.searchTag(searchWord, userStore.userId);
   };
 
   return (

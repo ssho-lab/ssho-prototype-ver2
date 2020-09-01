@@ -11,8 +11,8 @@ class TagRepository {
     return axios.get(this.URL + ':8083/tag/reco?userId=14', {});
   }
 
-  searchTag(keyword) {
-    return axios.get(this.URL + ":8083/tag/search?keyword=" + keyword + "&userId=14");
+  searchTag(keyword, userId) {
+    return axios.get(this.URL + ":8083/tag/search?keyword=" + keyword + "&userId=" + userId);
   }
 }
 
