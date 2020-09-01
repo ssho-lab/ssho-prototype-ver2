@@ -22,24 +22,29 @@ class tagStore {
     } catch (error) {
       console.log(error);
     }
-    const data = response.data;
+    
     if(response.headers["user-type"] === "initial"){
       this.tagList = [{embedding: null, id: 0, name: "랜덤 추천"}]
     }
     else if(response.headers["user-type"] === "pass"){
-      this.tagList = data.map(tag => new tagModel(tag));
+      this.tagList = response.data.map(tag => new tagModel(tag));
     }
   }
 
   @action
-  async searchTag(searchWord) {
+  async searchTag(searchWord, userId) {
     let response;
     try{
-      response = await tagRepository.searchTag(searchWord);
+      response = await tagRepository.searchTag(searchWord, userId);
     } catch (error) {
       console.log(error);
     }
-    this.tagList = response.data;
+    if(response.headers["user-type"] === "initial"){
+      this.tagList = [{embedding: null, id: 0, name: "랜덤 추천"}]
+    }
+    else if(response.headers["user-type"] === "pass"){
+      this.tagList = response.data.map(tag => new tagModel(tag));
+    }
   }
 }
 
