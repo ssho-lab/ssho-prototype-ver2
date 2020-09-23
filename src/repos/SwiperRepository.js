@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 class SwiperRepository {
-  URL = 'http://13.125.225.61';
+  URL = 'http://3.35.129.79';
 
   constructor(url) {
     this.URL = url || this.URL;
