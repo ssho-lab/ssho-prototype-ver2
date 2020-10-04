@@ -13,6 +13,7 @@ import LogInScreen from '../src/screens/LoginScreen';
 import SwipeScreen from '../src/screens/Swipe/SwipeScreen';
 import CardSettingScreen from '../src/screens/CardSettingScreen';
 import HomeScreen from '../src/screens/Home/HomeScreen';
+import ShoppingBagScreen from '../src/screens/ShoppingBag/ShoppingBagScreen';
 
 const Home = createStackNavigator();
 
@@ -73,6 +74,11 @@ function TabNavigator() {
         name="Swipe"
         component={SwipeScreen}
         options={{tabBarLabel: 'Swipe', tabBarIcon: () => <Text>🛍️</Text>}}
+      />
+      <Tab.Screen
+        name="Shop"
+        component={ShoppingBagScreen}
+        options={{tabBarLabel: 'Shop', tabBarIcon: () => <Text>🛍️</Text>}}
       />
     </Tab.Navigator>
   );
