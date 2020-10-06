@@ -39,10 +39,12 @@ const SignUpScreen = ({userStore}) => {
   };
 
   const handleClick = () => {
-    //userStore.setUserName(userName);
-    // Todo. 튜토리얼 여부 판단
+    // 아직 유효성 통과 여부 확인하지 않음
     userStore.signUp();
     console.log(userStore.user);
+
+    // 아직 api 가입 완료 여부 확인하지 않음
+    navigation.navigate('complete');
   };
 
   return (

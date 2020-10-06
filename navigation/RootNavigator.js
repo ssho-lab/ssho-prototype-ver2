@@ -14,6 +14,7 @@ import SwipeScreen from '../src/screens/Swipe/SwipeScreen';
 import CardSettingScreen from '../src/screens/CardSettingScreen';
 import HomeScreen from '../src/screens/Home/HomeScreen';
 import SignUpScreen from '../src/screens/SignUp/SignUpScreen';
+import CompleteScreen from '../src/screens/SignUp/CompleteScreen';
 
 const Home = createStackNavigator();
 
@@ -33,7 +34,6 @@ function HomeNavigator() {
         // 로그인을 하지 않은 상태
         <>
           <Home.Screen name="Auth" component={AuthNavigator} />
-          <Home.Screen name="SignUpStack" component={SignUpNavigator} />
         </>
       )}
     </Home.Navigator>
@@ -92,6 +92,7 @@ const SignUpNavigator = () => {
   return (
     <SignUp.Navigator>
       <SignUp.Screen name="SignUp" component={SignUpScreen} />
+      <SignUp.Screen name="complete" component={CompleteScreen} />
     </SignUp.Navigator>
   );
 };

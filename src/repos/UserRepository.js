@@ -17,7 +17,7 @@ class UserRepository {
   }
 
   signUp(name, email, password) {
-    return axios.post(this.URL + '8080/users/signup', {
+    return axios.post('http://3.35.129.79:8080/users/signup', {
       params: {
         email: email,
         password: password,
