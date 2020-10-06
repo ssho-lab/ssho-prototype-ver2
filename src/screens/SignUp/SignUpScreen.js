@@ -19,7 +19,7 @@ const SignUpScreen = ({userStore}) => {
 
   const handlePassword = e => {
     var text = e.nativeEvent.text;
-    userStore.setUserName(text);
+    userStore.setUserPassword(text);
     setUserPassword(text);
     checkPassword(text);
   };
@@ -41,13 +41,8 @@ const SignUpScreen = ({userStore}) => {
   const handleClick = () => {
     //userStore.setUserName(userName);
     // Todo. 튜토리얼 여부 판단
-    userStore.signIn();
+    userStore.signUp();
     console.log(userStore.user);
-    if (userStore.user.status === 'initial') {
-      navigation.navigate('Swipe');
-    } else {
-      navigation.navigate('TagSelect');
-    }
   };
 
   return (
@@ -64,6 +59,7 @@ const SignUpScreen = ({userStore}) => {
       )}
       <TextInput
         placeholder="비밀번호를 입력하세요"
+        secureTextEntry={true}
         value={userPassword}
         style={styles.sshoInput}
         onChange={e => handlePassword(e)}
@@ -90,7 +86,7 @@ const styles = StyleSheet.create({
   },
   sshoText: {
     color: 'black',
-    fontSize: 40,
+    fontSize: 30,
     marginBottom: 20,
   },
   errorText: {

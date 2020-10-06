@@ -8,11 +8,16 @@ class UserStore {
     this.root = root;
   }
 
-  @observable user = {name: '', id: '', status: 'initial'};
+  @observable user = {name: '', id: '', status: 'initial', password: ''};
 
   @action
   setUserName(userName) {
     this.user.name = userName;
+  }
+
+  @action
+  setUserPassword(password) {
+    this.user.password = password;
   }
 
   @action
@@ -28,6 +33,21 @@ class UserStore {
     this.user.status =
       (response && response.header && response.header['User-Type']) ||
       'initial';
+  }
+
+  @action
+  async signUp() {
+    let response;
+    try {
+      response = await userRepository.signUp(
+        this.user.name,
+        this.user.name,
+        this.user.password,
+      );
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
   }
 }
 

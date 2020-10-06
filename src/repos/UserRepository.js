@@ -15,6 +15,16 @@ class UserRepository {
       },
     });
   }
+
+  signUp(name, email, password) {
+    return axios.post(this.URL + '8080/users/signup', {
+      params: {
+        email: email,
+        password: password,
+        name: name,
+      },
+    });
+  }
 }
 
 export default UserRepository;
