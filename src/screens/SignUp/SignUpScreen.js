@@ -40,11 +40,14 @@ const SignUpScreen = ({userStore}) => {
 
   const handleClick = () => {
     // 아직 유효성 통과 여부 확인하지 않음
-    userStore.signUp();
-    console.log(userStore.user);
+    var doSignUp = userStore.signUp();
 
-    // 아직 api 가입 완료 여부 확인하지 않음
-    navigation.navigate('complete');
+    if (doSignUp) {
+      // api 가입 완료 여부 확인
+      navigation.navigate('complete');
+    }
+
+    console.log(userStore.user);
   };
 
   return (
