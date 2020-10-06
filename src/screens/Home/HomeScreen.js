@@ -36,6 +36,11 @@ const HomeScreen = ({userStore}) => {
         title="로그인"
         onPress={() => handleClick()}
       />
+      <Button
+        style={styles.button}
+        title="회원가입"
+        onPress={() => navigation.navigate('SignUpStack')}
+      />
     </View>
   );
 };

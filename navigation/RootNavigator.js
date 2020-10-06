@@ -13,6 +13,7 @@ import LogInScreen from '../src/screens/LoginScreen';
 import SwipeScreen from '../src/screens/Swipe/SwipeScreen';
 import CardSettingScreen from '../src/screens/CardSettingScreen';
 import HomeScreen from '../src/screens/Home/HomeScreen';
+import SignUpScreen from '../src/screens/SignUp/SignUpScreen';
 
 const Home = createStackNavigator();
 
@@ -24,10 +25,16 @@ function HomeNavigator() {
   return (
     <Home.Navigator>
       {state.isLoggedIn ? ( // 로그인을 한 상태
-        <Home.Screen name="S-Sho" component={MainStackNavigator} />
+        <>
+          <Home.Screen name="S-Sho" component={MainStackNavigator} />
+          <Home.Screen name="SignUpStack" component={SignUpNavigator} />
+        </>
       ) : (
         // 로그인을 하지 않은 상태
-        <Home.Screen name="Auth" component={AuthNavigator} />
+        <>
+          <Home.Screen name="Auth" component={AuthNavigator} />
+          <Home.Screen name="SignUpStack" component={SignUpNavigator} />
+        </>
       )}
     </Home.Navigator>
   );
@@ -39,6 +46,7 @@ function AuthNavigator() {
   return (
     <Auth.Navigator>
       <Auth.Screen name="LogIn" component={LogInScreen} />
+      <Auth.Screen name="SignUpStack" component={SignUpNavigator} />
     </Auth.Navigator>
   );
 }
@@ -77,6 +85,16 @@ function TabNavigator() {
     </Tab.Navigator>
   );
 }
+
+const SignUp = createStackNavigator();
+
+const SignUpNavigator = () => {
+  return (
+    <SignUp.Navigator>
+      <SignUp.Screen name="SignUp" component={SignUpScreen} />
+    </SignUp.Navigator>
+  );
+};
 
 const RootNavigator = () => {
   return (
