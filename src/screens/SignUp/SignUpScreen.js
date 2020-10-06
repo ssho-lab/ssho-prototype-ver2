@@ -7,22 +7,35 @@ const SignUpScreen = ({userStore}) => {
   const navigation = useNavigation();
   const [userEmail, setUserEmail] = useState('');
   const [userPassword, setUserPassword] = useState('');
+  const [emailError, setEmailError] = useState(false);
+  const [passwordError, setPasswordError] = useState(false);
 
   const handleEmail = e => {
     var text = e.nativeEvent.text;
     userStore.setUserName(text);
     setUserEmail(text);
+    checkEmail(text);
   };
 
   const handlePassword = e => {
     var text = e.nativeEvent.text;
     userStore.setUserName(text);
     setUserPassword(text);
+    checkPassword(text);
   };
 
   const checkEmail = email => {
     var regExp = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
-    return regExp.test(email);
+    var check = regExp.test(email);
+    if (!check) setEmailError(true);
+    else setEmailError(false);
+  };
+
+  const checkPassword = password => {
+    var regExp = /^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{8,10}$/;
+    var check = regExp.test(password);
+    if (!check) setPasswordError(true);
+    else setPasswordError(false);
   };
 
   const handleClick = () => {
@@ -46,17 +59,25 @@ const SignUpScreen = ({userStore}) => {
         style={styles.sshoInput}
         onChange={e => handleEmail(e)}
       />
+      {emailError && (
+        <Text style={styles.errorText}>이메일의 형태로 입력해주세요.</Text>
+      )}
       <TextInput
         placeholder="비밀번호를 입력하세요"
         value={userPassword}
         style={styles.sshoInput}
         onChange={e => handlePassword(e)}
       />
-      <Button
-        style={styles.button}
-        title="가입하기"
-        onPress={() => handleClick()}
-      />
+      {passwordError && (
+        <Text style={styles.errorText}>비밀번호는 8~10자 영문, 숫자 조합</Text>
+      )}
+      <View style={{marginTop: 80}}>
+        <Button
+          style={styles.button}
+          title="가입하기"
+          onPress={() => handleClick()}
+        />
+      </View>
     </View>
   );
 };
@@ -72,11 +93,16 @@ const styles = StyleSheet.create({
     fontSize: 40,
     marginBottom: 20,
   },
+  errorText: {
+    fontSize: 17,
+    color: 'rgb(255,0,0)',
+  },
   sshoInput: {
-    width: 160,
+    width: 300,
+    fontSize: 17,
     borderBottomWidth: 1,
     borderBottomColor: '#bdc3c7',
-    marginBottom: 20,
+    marginTop: 50,
   },
   button: {
     width: 200,
