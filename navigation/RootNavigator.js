@@ -14,6 +14,7 @@ import SwipeScreen from '../src/screens/Swipe/SwipeScreen';
 import CardSettingScreen from '../src/screens/CardSettingScreen';
 import HomeScreen from '../src/screens/Home/HomeScreen';
 import ShoppingBagScreen from '../src/screens/ShoppingBag/ShoppingBagScreen';
+import ShoppingBagDetailScreen from '../src/screens/ShoppingBag/ShoppingBagDetailScreen';
 
 const Home = createStackNavigator();
 
@@ -50,6 +51,7 @@ function MainStackNavigator() {
   return (
     <Main.Navigator>
       <Main.Screen name="Tab" component={TabNavigator} />
+      <Main.Screen name="ShopDetail" component={ShoppingBagDetailScreen} />
       <Main.Screen name="CardSetting" component={CardSettingScreen} />
     </Main.Navigator>
   );
