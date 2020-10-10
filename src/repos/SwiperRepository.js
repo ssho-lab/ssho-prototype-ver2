@@ -9,8 +9,9 @@ class SwiperRepository {
 
   getItemList() {
     return axios.get(this.URL + ':8080/cache/user-item', {
-      params: {
-        userId: 14,
+      headers: {
+        Authorization:
+          'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJzc2hvIiwidXNlcl9pZHgiOjE4LCJleHAiOjE2MDUwMDkyNjN9.g3zUGANJlE6-ZmYF3b3OlDXUTySaeymfBTGN4E_Sfd0',
       },
     });
   }

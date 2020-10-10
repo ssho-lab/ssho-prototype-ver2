@@ -1,4 +1,3 @@
-import {React, Component} from 'react';
 import {observable, action} from 'mobx';
 import moment from 'moment';
 import SwiperRepository from '../repos/SwiperRepository';
@@ -37,7 +36,6 @@ class itemStore {
   }
 
   @action // swipeLog startTime 저장
-  // moment.js 사용
   setStartTime = () => {
     const startTime = moment(new Date()).format('YYYY-MM-DD hh:mm:ss');
     this.swipeLogs.startTime = startTime;
