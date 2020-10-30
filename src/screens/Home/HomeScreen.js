@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {Text, View, StyleSheet, TextInput, Button} from 'react-native';
 import {inject, observer} from 'mobx-react';
 import {useNavigation} from '@react-navigation/native';
+import {AsyncStorage} from '@react-native-community/async-storage';
 
 const HomeScreen = ({userStore}) => {
   const navigation = useNavigation();
@@ -16,10 +17,22 @@ const HomeScreen = ({userStore}) => {
     // Todo. 튜토리얼 여부 판단
     userStore.signIn();
     console.log(userStore.user);
+
+    saveToken(userStore.user.token);
+
     if (userStore.user.status === 'initial') {
       navigation.navigate('Swipe');
     } else {
       navigation.navigate('TagSelect');
+    }
+  };
+
+  // asyncstorage에 토큰을 저장한다
+  const saveToken = async (token) => {
+    try {
+      await AsyncStorage.setItem('token', JSON.stringify(token));
+    } catch (err) {
+      console.log(err);
     }
   };
 

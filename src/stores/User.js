@@ -8,7 +8,7 @@ class UserStore {
     this.root = root;
   }
 
-  @observable user = {name: '', id: '', status: 'initial', password: ''};
+  @observable user = {name: '', id: '', status: 'initial', password: '', token: ''};
 
   @action
   setUserName(userName) {
@@ -29,6 +29,8 @@ class UserStore {
       console.log(error);
     }
 
+    this.user.token = response.data.token; // 응답으로 받은 토큰 저장
+    
     this.user.id = (response && response.data) || 14;
     this.user.status =
       (response && response.header && response.header['User-Type']) ||
